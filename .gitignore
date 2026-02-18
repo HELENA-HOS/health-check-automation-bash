@@ -1,0 +1,8 @@
+# Logs gerados pelo script
+health_check.log
+health_check.log_*
+
+# Arquivos temporários do sistema
+*.swp
+*~
+.DS_Store
