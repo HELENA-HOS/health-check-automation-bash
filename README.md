@@ -1,4 +1,7 @@
 # Health Check Automation - Bash
+![Version](https://img.shields.io/badge/version-v1.0-blue)
+![Status](https://img.shields.io/badge/status-em%20evolução-yellow)
+
 
 ## 🎯 Objetivo
 
@@ -67,6 +70,32 @@ Simular, de forma progressiva, práticas próximas a ambientes reais de produç�
 - Automação preventiva
 - Estruturação de scripts para uso em pipelines
 - Versionamento e evolução incremental
+
+---
+
+## 🗺 Roadmap do Projeto
+
+### ✔ v1.0
+- Health check HTTP básico
+- Logging com timestamp
+- Exit codes apropriados
+
+### 🔄 v2.0 (em desenvolvimento)
+- Verificação de serviço via systemctl
+- Retry automático
+
+### 🔜 v3.0
+- Log rotativo
+- Integração com cron
+
+### 🔜 v4.0
+- Integração com CI/CD
+- Estruturação para containerização (Docker)
+
+### 🔜 Futuras Evoluções
+- Notificação automática em caso de falha
+- Integração com monitoramento
+- Testes automatizados do script
 
 ---
 
