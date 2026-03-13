@@ -1,16 +1,23 @@
 #!/bin/bash
 
+
 URL="http://localhost:80"
 LOG_FILE="health_check.log"
-
+SERVICE="apache2"
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
-STATUS=$(curl -s -o /dev/null -w "%{http_code}" $URL)
 
-if [ "$STATUS" -eq 200 ]; then
-    echo "$DATE - OK - Status: $STATUS" >> $LOG_FILE
-    exit 0
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+
+
+if [ "$HTTP_CODE" -eq 200 ]; then
+    STATUS="OK"
+    EXIT_CODE=0
 else
-    echo "$DATE - ERROR - Status: $STATUS" >> $LOG_FILE
-    exit 1
+    STATUS="ERROR"
+    EXIT_CODE=1
 fi
+
+echo "[$DATE] [$SERVICE] [$STATUS] [HTTP: $HTTP_CODE]" >> $LOG_FILE
+
+exit $EXIT_CODE
