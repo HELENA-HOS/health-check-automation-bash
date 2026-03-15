@@ -2,7 +2,6 @@
 
 
 # Configurações
-
 PORT=80
 URL="http://localhost:$PORT"
 LOG_FILE="health_check.log"
@@ -15,17 +14,14 @@ RETRY_DELAY=2
 
 
 # Verificar serviço
-
 SERVICE_STATUS=$(systemctl is-active $SERVICE)
 
 
 # Verificar porta
-
 PORT_STATUS=$(ss -tunl | grep "$PORT" )
 
 
 # Verificar HTTP com retry
-
 ATTEMPT=1
 HTTP_CODE="000"
 
@@ -42,8 +38,8 @@ while [ $ATTEMPT -le $MAX_RETRIES ]; do
 
 done
 
-# Verificar status final
 
+# Verificar status final
 if [ "$SERVICE_STATUS" = "active" ] && [ "$HTTP_CODE" -eq 200 ] && [ -n "$PORT_STATUS" ]; then
     STATUS="OK"
     EXIT_CODE=0
@@ -52,6 +48,6 @@ else
     EXIT_CODE=1
 fi
 
-echo "[$DATE] [$SERVICE] [$STATUS] [HTTP: $HTTP_CODE]" >> $LOG_FILE
+echo "[$DATE] [SERVICE:$SERVICE] [STATUS:$STATUS] [PORT:$PORT] [HTTP:$HTTP_CODE]" >> $LOG_FILE
 
 exit $EXIT_CODE
