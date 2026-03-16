@@ -144,6 +144,7 @@ Simular, de forma progressiva, práticas próximas a ambientes reais de produç�
 ### 🔜 v3.0
 - Log rotativo
 - Integração com cron
+- Retry com exponential backoff
 
 ### 🔜 v4.0
 - Integração com CI/CD
